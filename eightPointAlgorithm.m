@@ -37,17 +37,18 @@ function F_2 = eightPointAlgorithm(F,q1, q2)
     q1 = T1 * [q1 ; ones(1,size(q1,2))];
     q2 = T2 * [q2 ; ones(1,size(q2,2))];
     
-    % SWAP - not sure why
-    aa = q1
-    q1 = q2
-    q2 = aa
+%     % SWAP - not sure why
+%     aa = q1
+%     q1 = q2
+%     q2 = aa
     
     
     % construct the matrix A
     A = zeros(size(q1,2),9);
     for i = 1:size(q1,2)
         %               (x'x            x'y         x'          y'x             y'y         y'      x       y     1)f = 0
-        A(i,:) = [q1(1,i)*q2(1,i) q1(1,i)*q2(2,i) q1(1,i) q1(2,i)*q2(1,i) q1(2,i)*q2(2,i) q1(2,i) q2(1,i) q2(2,i) 1];
+%       A(i,:) = [q1(1,i)*q2(1,i) q1(1,i)*q2(2,i) q1(1,i) q1(2,i)*q2(1,i) q1(2,i)*q2(2,i) q1(2,i) q2(1,i) q2(2,i) 1];
+        A(i,:) = [q2(1,i)*q1(1,i) q2(1,i)*q1(2,i) q2(1,i) q2(2,i)*q1(1,i) q2(2,i)*q1(2,i) q2(2,i) q1(1,i) q1(2,i) 1];
     end
 
     % compute the SVD of A
